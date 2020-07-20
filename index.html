@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/sweetalert2.js"></script>
+<script src="js/nuevo.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="Web page to play Animalitos Game" />
+	<meta name="author" content="JUAN JOSE ORTIZ ALBORNOZ Y FRANCISCO REYES VAZCONCELOS VEN/MEX" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	
+	<!--   icono de la pagina            -->
+	<link rel="shortcut icon" href="img/centro.ico">  
+    <title>Ruleta Animalitos</title>
+	
+	
+	<!--   alert muestra imagen    -->
+	
+
+    <link rel="stylesheet" type="text/css" href="css/sweetalert2.css">
+
+
+	
+
+	<style type="text/css">	
+	
+.titulos_tablas {
+
+    background-color:#069;
+    color:#FFF;
+    text-align:center;
+    font-size:15px;
+}
+
+	
+	/*/   COLOCAR LA IMAGEN DE FONDO  --> */   
+	#fullscreen{
+      z.index: -999;
+	  width:100%;
+	  height: auto;
+	  position: fixed;
+	  top: 0;
+	  left:0;
+	}
+	
+
+.decotablas {
+    border-radius:15px;
+    border-style:solid;
+    border-color::#069;
+    cursor:pointer;
+}
+	
+    /*/   fuente del texto  --> 
+    text{
+        font-family:Helvetica, Arial, sans-serif;
+        font-size:11px;
+        pointer-events:none;
+    }
+	*/ 
+    #chart{
+        position:absolute;
+
+    }
+	
+	
+	#presentacion{
+        position: absolute;
+        width:700px;
+        height:150px;
+        top:0;
+        left:680px;
+    }
+	
+
+	
+
+	
+
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+
+
+}
+
+
+
+.luz.on{
+  color: #0099ff;/*color del texto al cambiar*/
+  text-shadow:
+     1px  1px rgba(255, 255, 255, .1),
+    -1px -1px rgba(0, 0, 0, .88),
+     0px  0px 20px #0099ff;/*color de la luz del texto*/
+     left:450px;
+     top:600px;
+     position: absolute;
+}
+.luz{
+  font-size:40px;/*tamaño de la fuente*/
+  color: #000000;
+  text-shadow:
+     1px  1px rgba(255, 255, 255, .1),
+    -1px -1px rgba(0, 0, 0, .88);
+    position: absolute;
+    left:450px;
+    top:600px;
+}
+
+
+	
+	#ayuda{
+        position: absolute; 
+        left:0px;
+        left:620px;
+    top:650px;
+    }
+	
+
+	#listaderesultados{
+        position: absolute;
+        width:550px;
+        left:650px;
+        top:200px;
+
+
+    }
+
+
+
+
+
+     
+
+#resultados div:nth-child(1),
+#resultados div:nth-child(2),
+#resultados div:nth-child(3),
+#resultados div:nth-child(4),
+#resultados div:nth-child(5),
+#resultados div:nth-child(6),
+#resultados div:nth-child(7),
+#resultados div:nth-child(8),
+#resultados div:nth-child(9),
+#resultados div:nth-child(10),
+#resultados div:nth-child(11),
+#resultados div:nth-child(12),
+#resultados div:nth-child(13),
+#resultados div:nth-child(14),
+#resultados div:nth-child(15),
+#resultados div:nth-child(16),
+#resultados div:nth-child(17),
+#resultados div:nth-child(18),
+#resultados div:nth-child(19),
+#resultados div:nth-child(20),
+#resultados div:nth-child(21),
+#resultados div:nth-child(22),
+#resultados div:nth-child(23),
+#resultados div:nth-child(24),
+#resultados div:nth-child(25),
+#resultados div:nth-child(26),
+#resultados div:nth-child(27),
+#resultados div:nth-child(28),
+#resultados div:nth-child(29),
+#resultados div:nth-child(30),
+#resultados div:nth-child(31),
+#resultados div:nth-child(32),
+#resultados div:nth-child(33),
+#resultados div:nth-child(34),
+#resultados div:nth-child(35),
+#resultados div:nth-child(36),
+#resultados div:nth-child(37),
+#resultados div:nth-child(38)
+
+ {
+  width: 16%;
+  float: left;
+}
+
+	
+
+
+
+
+
+
+.animation-examples {
+  width: 600px;
+  height: 120px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: cambria;
+
+
+    
+}
+
+.animation-examples.two {
+  color: #FA2A00;
+  outline: 10px dashed #F2D694;
+  animation: 2s animateBorderTwo ease infinite;
+
+
+}
+
+@keyframes animateBorderTwo {
+  to {
+    outline-color: #FA2A00;
+    box-shadow: 0 0 0 10px #F2D694;
+     left: 600px;
+
+  }
+}
+
+
+    </style>
+</head>
+<body onkeyup="keypress()">
+
+
+
+
+
+
+
+
+
+
+<!-- <img src="verde.jpg" id="fullscreen"</>      COLOCAR LA IMAGEN DE FONDO si se desea  -->
+    <div id="chart"></div>
+    <div id="blink" class="luz" >
+        COSTO DEL CARTON:500bs
+    </div>
+	<!--   lugar donde muestro los resultados    -->
+	
+    <div id="question"><h1></h1></div> 
+	 <input type="button" value="REINICIAR RULETA" id="ayuda" onClick="window.location.reload()" />
+    </div>
+	
+<!--<div class="animation-examples two" style="">WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>-->
+
+	 
+<table id="listaderesultados" align="center" cellpadding="1" cellspacing="0" bordercolor="#006699" class="decotablas">
+            <tbody><tr align="center"  class="titulos_tablas">
+              <td><strong>RESULTADOS DEL SORTEO</strong></td>
+            
+            </tr>
+  
+            <tr align="center" class="textos_reporte">
+              <td align="center"  id="resultados"></td>
+            
+         
+            </tr>
+           
+          </tbody></table>
+
+    
+	
+	 
+	 
+	 
+    <script type="text/javascript" content="text/html; charset=UTF-8" >
+
+
+
+
+
+
+
+
+
+
+
+
+document.oncontextmenu = function(){return false} //funcion para bloquear el click derecho del mouse
+	
+console.log('%c ¡ALERTA! ', 'color: RED; font-weight: bold; font-size:3em;');
+console.log('%c Esta función del navegador está pensada para desarrolladores AUTORIZADOS por JUAN ORTIZ. Si alguien te ha indicado que copiaras y pegaras algo aquí para habilitar una función para editar o "piratear" el sistema , se tomarán medidas legales. ', ' font-weight: bold; font-size:3em;');
+console.log('%c  DesarrollosOrtiz© ' ,' font-weight: bold; font-size:3em;');
+
+
+ function keypress()
+      {
+            if(event.keyCode == 123){ // Capture f12
+                                            window.close();
+            }
+      }
+
+
+
+(function() {
+
+setInterval(function(){
+  var el = document.getElementById('blink');
+  if(el.className == 'luz'){
+      el.className = 'luz on';
+  }else{
+      el.className = 'luz';
+  }
+},500);
+
+})();
+
+
+
+
+
+
+
+
+
+	
+	//   tamaño de la ruleta 
+        var padding = {top:0, right:35, bottom:0, left:0},
+            w = 600 -  padding.right,
+            h = 600  - padding.bottom,
+            r = Math.min(w, h)/2,
+            rotation = 0,
+            oldrotation = 0,
+            picked = 100000,
+            oldpick = [],
+            color = d3.scale.category20b();
+      var data = [
+                    {"label":"DELFIN",  "value":0,"name":"1",  "question":"DELFIN","png":"png/delfin.png","ogg":"ogg/delfin.ogg"}, 
+					{"label":"ZAMURO", "value":28,"name":"2", "question":"ZAMURO","png":"png/zamuro.png","ogg":"ogg/zamuro.ogg"},
+					{"label":"ÁGUILA",  "value":9,"name":"3",  "question":"ÁGUILA","png":"png/aguila.png","ogg":"ogg/aguila.ogg"}, 
+					{"label":"VACA", "value":26,"name":"4", "question":"VACA","png":"png/vaca.png","ogg":"ogg/vaca.ogg"}, 
+					{"label":"CAIMÁN", "value":30,"name":"5", "question":"CAIMAN","png":"png/caiman.png","ogg":"ogg/caiman.ogg"}, 
+					{"label":"GATO", "value":11,"name":"6", "question":"GATO","png":"png/gato.png","ogg":"ogg/gato.ogg"}, 
+					{"label":"PERICO",  "value":7,"name":"7",  "question":"PERICO","png":"png/perico.png","ogg":"ogg/perico.ogg"},
+					{"label":"CERDO", "value":20,"name":"8", "question":"CERDO","png":"png/cerdo.png","ogg":"ogg/cerdo.ogg"},
+					{"label":"ARDILLA", "value":32,"name":"9", "question":"ARDILLA","png":"png/ardilla.png","ogg":"ogg/ardilla.ogg"},
+					{"label":"PAVO", "value":17,"name":"10", "question":"PAVO","png":"png/pavo.png","ogg":"ogg/pavo.ogg"}, 
+					{"label":"LEÓN",  "value":5,"name":"11",  "question":"LEÓN","png":"png/leon.png","ogg":"ogg/leon.ogg"},
+					{"label":"CAMELLO", "value":22,"name":"12", "question":"CAMELLO","png":"png/camello.png","ogg":"ogg/camello.ogg"}, 
+					{"label":"VENADO", "value":34,"name":"13", "question":"VENADO","png":"png/venado.png","ogg":"ogg/venado.ogg"},
+					{"label":"ZORRO", "value":15,"name":"14", "question":"ZORRO","png":"png/zorro.png","ogg":"ogg/zorro.ogg"}, 
+					{"label":"CIEMPIES",  "value":3,"name":"15",  "question":"CIEMPIES","png":"png/ciempies.png","ogg":"ogg/ciempies.ogg"}, 
+					{"label":"IGUANA", "value":24,"name":"16", "question":"IGUANA","png":"png/iguana.png","ogg":"ogg/iguana.ogg"},
+					{"label":"CULEBRA", "value":36,"name":"17", "question":"CULEBRA","png":"png/culebra.png","ogg":"ogg/culebra.ogg"},
+					{"label":"MONO", "value":13,"name":"18", "question":"MONO","png":"png/mono.png","ogg":"ogg/mono.ogg"}, 
+					{"label":"CARNERO",  "value":1,"name":"19",  "question":"CARNERO","png":"png/carnero.png","ogg":"ogg/carnero.ogg"},		
+					{"label":"BALLENA",  "value":"00","name":"21",  "question":"BALLENA","png":"png/ballena.png","ogg":"ogg/ballena.ogg"},
+					{"label":"PERRO", "value":27,"name":"20", "question":"PERRO","png":"png/perro.png","ogg":"ogg/perro.ogg"},
+					{"label":"TIGRE", "value":10,"name":"22", "question":"TIGRE","png":"png/tigre.png","ogg":"ogg/tigre.ogg"}, 
+					{"label":"GALLINA", "value":25,"name":"23", "question":"GALLINA","png":"png/gallina.png","ogg":"ogg/gallina.ogg"}, 
+					{"label":"ELEFANTE", "value":29,"name":"24", "question":"ELEFANTE","png":"png/elefante.png","ogg":"ogg/elefante.ogg"}, 
+					{"label":"CABALLO", "value":12,"name":"25", "question":"CABALLO","png":"png/caballo.png","ogg":"ogg/caballo.ogg"}, 
+                    {"label":"RATÓN",  "value":8,"name":"26",  "question":"RATÓN","png":"png/raton.png","ogg":"ogg/raton.ogg"}, 
+                    {"label":"CHIVO", "value":19,"name":"27", "question":"CHIVO","png":"png/chivo.png","ogg":"ogg/chivo.ogg"},
+				    {"label":"LAPA", "value":31,"name":"28", "question":"LAPA","png":"png/lapa.png","ogg":"ogg/lapa.ogg"},
+					{"label":"BURRO", "value":18,"name":"29", "question":"BURRO","png":"png/burro.png","ogg":"ogg/burro.ogg"},
+					{"label":"RANA",  "value":6,"name":"30",  "question":"RANA","png":"png/rana.png","ogg":"ogg/rana.ogg"}, 	  
+					{"label":"GALLO", "value":21,"name":"31", "question":"GALLO","png":"png/gallo.png","ogg":"ogg/gallo.ogg"},	  
+				    {"label":"PESCADO", "value":33,"name":"32", "question":"PESCADO","png":"png/pescado.png","ogg":"ogg/pescado.ogg"},
+					{"label":"OSO", "value":16,"name":"33", "question":"OSO","png":"png/oso.png","ogg":"ogg/oso.ogg"},
+					{"label":"ALACRÁN",  "value":4,"name":"34",  "question":"ALACRAN","png":"png/alacran.png","ogg":"ogg/alacran.ogg"},
+                    {"label":"CEBRA",  "value":23,"name":"35",  "question":"CEBRA","png":"png/cebra.png","ogg":"ogg/cebra.ogg"},
+                    {"label":"JIRAFA", "value":35,"name":"36", "question":"JIRAFA","png":"png/jirafa.png","ogg":"ogg/jirafa.ogg"},
+					{"label":"PALOMA", "value":14,"name":"37", "question":"PALOMA","png":"png/paloma.png","ogg":"ogg/paloma.ogg"},
+					{"label":"TORO",  "value":2,"name":"38",  "question":"TORO","png":"png/toro.png","ogg":"ogg/toro.ogg"} 
+        ];
+		
+		
+		
+        var svg = d3.select('#chart')
+            .append("svg")
+            .data([data])
+            .attr("width",  w + padding.left + padding.right)
+            .attr("height", h + padding.top + padding.bottom);
+        
+		
+		
+		var container = svg.append("g")
+            .attr("class", "chartholder")
+            .attr("transform", "translate(" + (w/2 + padding.left) + "," + (h/2 + padding.top) + ")");
+        
+		
+		var vis = container
+            .append("g");
+            
+        var pie = d3.layout.pie().sort(null).value(function(d){return 1;});
+		
+		
+        // declaranfo  funcion generadora arc
+        var arc = d3.svg.arc().outerRadius(r);
+		
+		
+       // seleccionando path, usando el generador arc para dibujar la ruleta
+        var arcs = vis.selectAll("g.slice")
+            .data(pie)
+            .enter()
+            .append("g")
+            .attr("class", "slice");
+             arcs.append("path")
+            .attr("fill", function(d, i){ return color(i); })
+            .attr("d", function (d) { return arc(d); });
+			
+			
+
+
+
+
+
+
+
+
+
+
+             // añadir el texto de los elementos Y retorna en la ruleta los elementos que necesito mostrar del var
+                arcs.append("text").attr("transform", function(d)
+                {
+                d.innerRadius = 0;
+				//aqui se ubican los elementos a mostrar
+                d.outerRadius = r;
+                d.angle = (d.startAngle + d.endAngle)/2;
+                return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius -10) +")";
+                })
+
+
+            
+
+
+
+
+            .attr("text-anchor", "end")
+            .text( function(d, i) {
+                return data[i].value; // + '\n' +data[i].value;  se concateno el return para poder agregar mas cosas a la Ruleta
+            });
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        container.on("click", spin);
+     
+	 
+		//muetra un sweetalert cuando llega el fin de la ruleta
+		function spin(d){  
+            container.on("click", null);		      
+             if(oldpick.length == data.length){             
+              
+
+
+swal("FIN DEL SORTEO!", 
+    "PRESIONE REINICIAR PARA COMENZAR DE NUEVO",
+     "success");
+                
+				
+				
+				
+                container.on("click", null);
+                return;
+            }
+            var  ps       = 360/data.length,
+                 pieslice = Math.round(1440/data.length),
+                 rng      = Math.floor((Math.random() * 1440) + 360);
+				 
+				 
+            //hace la magia del calculo, entre mas multiplicaciones mas rotacion
+            rotation = (Math.round(rng / ps) * ps*3);
+            
+            picked = Math.round(data.length - (rotation % 360)/ps);
+            picked = picked >= data.length ? (picked % data.length) : picked;
+            if(oldpick.indexOf(picked) !== -1){
+                d3.select(this).call(spin);
+                return;
+            } else {
+			// si se borra podran repetirse los animales pero cambiando de color por un gris
+                oldpick.push(picked); 
+            }
+            rotation += 90 - Math.round(ps/2);
+            vis.transition()
+			
+
+
+			//rotacion  a menor valor mas rapido a mayor valor mas lento
+                .duration(10000) //el valor default es de 10000
+                .attrTween("transform", rotTween)
+                .each("end", function(){
+				
+				
+                    //marcar como visto "color negro"
+                    d3.select(".slice:nth-child(" + (picked + 1) + ") path")
+                        .attr("fill", "#777");
+						
+						
+                    //mostrar la respuesta a la seleccion aleatoria usando el id question 
+                  //  d3.select("#question")
+                 //   .append("div")
+                 //   .append("img")
+                //    .attr('src', data[picked].png);	
+                     
+
+
+
+
+                    oldrotation = rotation;	
+
+
+
+
+                    d3.select("#resultados")
+                    .append("div")
+                    .append("img")
+                    .attr('src', data[picked].png);
+                  
+
+
+
+                     //ejecuta el sweetalert para que reproduzca un audio al caer una opcion 				
+					 swal({
+                           imageUrl: data[picked].png, 
+                           onOpen: function() {
+  	                       var zippi = new Audio(data[picked].ogg)
+                           zippi.play();
+                                              }
+                         })    
+                    container.on("click", spin);
+                });
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+ //creacion del circulo central de la ruleta
+     container.append('svg:pattern')
+      .attr("id", "img_cirle")
+        .attr("width", "100%")     
+        .attr("height", "100%")    
+       .attr("patternContentUnits", "objectBoundingBox")
+       .append("svg:image")
+       .attr("xlink:href", 'img/centro.png')//url donde esta la imagen
+       .attr("width", 1)  
+       .attr("height", 1)
+       .attr("preserveAspectRatio","none")
+       .attr("x", 0)
+       .attr("y", 0);
+	
+		
+		//posicionamiento del circulo central
+     container.append("circle")  
+      .attr("cx", 0)
+      .attr("cy", 00)
+		
+		
+		//radio, entre mayor sea mayor espacio ocupara
+       .attr("r", 60)
+       .style("fill", "url(#img_cirle)");
+		
+		
+	 	//dibujo de la flecha
+        svg.append("g")
+            .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
+            .append("path")
+            .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
+            .style({"fill":"black"});
+			
+			/* NOTA   si se quiere quitar la imagen y colocar un texto en un circulo blanco , reemplazar el comentado por el de arriba y listo
+	   //dibujo y forma de la ruleta
+        container.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 60)
+            .style({"fill":"white","cursor":"pointer"});
+	   //texto ruleta
+        container.append("text")
+            .attr("x", 0)
+            .attr("y", 15)
+            .attr("text-anchor", "middle")
+            .text("GIRAR")
+            .style({"font-weight":"bold", "font-size":"30px"});*/
+			
+			
+        function rotTween(to) {
+          var i = d3.interpolate(oldrotation % 360, rotation);
+          return function(t) {
+            return "rotate(" + i(t) + ")";
+          };
+        } 
+    </script>
+	
+	
+	
+	
+	
+	
+</body>
+</html>
